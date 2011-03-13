@@ -26,11 +26,12 @@ void setup() {
 }
 
 void draw() {
-  background(0);
+  
   int nNuclei = nuclei.size();
+  Nucleus n;
   for(int i=0; i<nNuclei; i++)
   {
-    Nucleus n = (Nucleus)nuclei.get(i);
+    n = (Nucleus)nuclei.get(i);
     int outcome = n.collide(nuclei, i);
     if(outcome != 0)
     {
@@ -55,6 +56,12 @@ void draw() {
     }
     n.move();
 
+    
+  }
+  background(0);
+  for(int i=0; i<nNuclei; i++)
+  {
+    n = (Nucleus)nuclei.get(i);
     n.draw();
   }
 }
