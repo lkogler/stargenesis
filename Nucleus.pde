@@ -164,7 +164,7 @@ class Nucleus
           Nucleon nuc = (Nucleon)nucleons.get(i);
           if(nuc.isProton==true) 
           {
-            nuc.isProton==false;
+            nuc.isProton=false;
             neutrons++;
             protons--;
             this.setType();
@@ -175,10 +175,23 @@ class Nucleus
     }
     if(type==6) // B8-> He4+He4
     {
-      
-      
+      if(random(1)>.80)
+      {
+        for(int i=0; i<protons+neutrons; i++)
+        {
+          Nucleon nuc = (Nucleon)nucleons.get(i);
+          if(nuc.isProton==true) 
+          {
+            nuc.isProton=false;
+            neutrons++;
+            protons--;
+            this.setType();
+            return -1;
+          }
+        }
+      } 
     }
-
+    return 0;
   }
 
   boolean react(Nucleus _other)
